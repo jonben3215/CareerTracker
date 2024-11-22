@@ -13,7 +13,7 @@ This software will allow users to keep track of their job applications on a sing
     - Locate the green "<> Code" and click it
     - On the bottom it should say "Download Zip"  and click it
 2. Extract the file 
-3. Locate the JobTracker that has the type called "Application" 
+3. Locate the file called "runProgram"
 4. Double click and the program should open and follow the prompt
 
 ### Using Git
