@@ -25,6 +25,13 @@ bool isFileEmpty(std::ifstream &file)
     return file.peek() == std::ifstream::traits_type::eof();
 }
 
+string toLower(const string &company)
+{
+    string newString = company;
+    transform(newString.begin(), newString.end(), newString.begin(), ::tolower);
+    return newString;
+}
+
 // Function to check if a file exists
 bool fileExists(const string &filename)
 {
@@ -35,6 +42,7 @@ bool fileExists(const string &filename)
 void JobTracker::searchByCompany(const string &companyName)
 {
     bool found = false;
+    string normalizeString = toLower(companyName);
 
     for(const auto &entry: jobTracker)
     {
@@ -43,8 +51,9 @@ void JobTracker::searchByCompany(const string &companyName)
         if(atPos != string::npos)
         {
             string company = entry.first.substr(atPos + 3);
+            string companyData = toLower(company);
 
-            if(company == companyName)
+            if(companyData == normalizeString)
             {
                 found  = true;
                 cout << entry.first << ": ";
@@ -61,7 +70,7 @@ void JobTracker::searchByCompany(const string &companyName)
     }
     if (!found)
     {
-        cerr << "No jobs found for company: " << companyName << endl;
+        cerr << "\033[31mNo jobs found for company: " << companyName << "\033[0m" << endl;
     }
 }
 
@@ -236,7 +245,7 @@ void JobTracker::loadFromJson(const string & filename)
     }
 }
 
-void JobTracker::jobReport() const
+void JobTracker::jobReport() 
 {
     int num = 1;
     for(const auto &entry: jobTracker)
@@ -256,4 +265,5 @@ void JobTracker::jobReport() const
         num++;
         cout << endl;
     }
+    totalJob = num;
 }

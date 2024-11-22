@@ -23,9 +23,9 @@ void menue()
     cout << "############ MAIN MENUE ############" << endl;
     cout << "1. Add Job" << endl;
     cout << "2. Update Application" << endl;
-    cout << "3. Remove a Job" << endl;
-    cout << "4. Search Job" << endl;
-    cout << "5. Job report" << endl;
+    cout << "3. Search Job" << endl;
+    cout << "4. Job report" << endl;
+    cout << "5. Remove a Job" << endl;
     cout << "6. Exit" << endl;
 }
 
@@ -107,7 +107,33 @@ int main()
             }
             break;
         }
-        case 3:
+         case 3:
+        {
+            cout << "######### SEARCH JOB #########" << endl;
+            cout << "\033[33mType 'quit' anytime to go back to main menue.\033[0m" << endl;
+            sleep_for(seconds(5));
+
+            while (true) // Infinite loop to repeatedly prompt for input
+            {
+                cout << "\033[36mEnter Company Name: \033[0m";
+                getline(cin, CompanyName);
+                if (CompanyName == "quit") // Check if the user wants to quit
+                    break;
+
+                jt.searchByCompany(CompanyName); // Remove the job
+                cout << endl;
+            }
+            break;
+        }
+        case 4:
+        {
+            cout << "YOUR JOB REPORT:" << endl;
+            jt.jobReport();
+            cout << endl;
+            sleep_for(seconds(10));
+            break;
+        }
+        case 5:
         {
 
             cout << "######### REMOVE A JOB #########" << endl;
@@ -132,33 +158,6 @@ int main()
 
             break;
         }
-        case 4:
-        {
-            cout << "######### SEARCH JOB #########" << endl;
-            cout << "\033[33mType 'quit' anytime to go back to main menue.\033[0m" << endl;
-            sleep_for(seconds(5));
-
-            while (true) // Infinite loop to repeatedly prompt for input
-            {
-                cout << "\033[36mEnter Company Name: \033[0m";
-                getline(cin, CompanyName);
-                if (CompanyName == "quit") // Check if the user wants to quit
-                    break;
-
-                jt.searchByCompany(CompanyName); // Remove the job
-                cout << endl;
-            }
-            break;
-        }
-        case 5:
-        {
-            cout << "YOUR JOB REPORT:" << endl;
-            jt.jobReport();
-            cout << endl;
-            sleep_for(seconds(10));
-            break;
-        }
-
         default:
             end = true;
             jt.saveToJson();

@@ -15,6 +15,7 @@ class JobTracker{
 
     private:
         unordered_map<string, vector<pair<string, string>>> jobTracker;
+        int totalJob = 0;
 
 
     public:
@@ -23,7 +24,7 @@ class JobTracker{
         void searchByCompany(const string &company);
         void updateJob(const string &jobTitle, const string &company, const string&stage);
         void removeJob(const string & jobTitle, const string &company);
-        void jobReport() const;
+        void jobReport();
         void loadFromJson(const string & filename);
         void saveToJson();
 };
