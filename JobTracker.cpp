@@ -265,5 +265,4 @@ void JobTracker::jobReport()
         num++;
         cout << endl;
     }
-    totalJob = num;
 }

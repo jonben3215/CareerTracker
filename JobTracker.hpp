@@ -15,7 +15,6 @@ class JobTracker{
 
     private:
         unordered_map<string, vector<pair<string, string>>> jobTracker;
-        int totalJob = 0;
 
 
     public:
