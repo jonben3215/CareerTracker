@@ -18,5 +18,5 @@ This software will allow users to keep track of their job applications on a sing
 
 ### Using Git
 1. clone the repo 
-2. Locate the JobTracker that has the type called "Application"
+2. Locate the file called "runProgram"
 3. Double click and the program should open and follow the prompt
